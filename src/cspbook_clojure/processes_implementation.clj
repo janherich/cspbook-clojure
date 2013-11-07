@@ -53,3 +53,13 @@
       (menu (rest a) p)
       (cons (first a) (menu (rest a) p)))
     a))
+
+(defn interact
+  "Function describing interaction with some process - a is the sequence of all valid events for the
+   process, p is the process in the starting state and k is the sequence of input events."
+  [a p k]
+  (cons (menu a p) (if (= 'END (first k))
+                     nil
+                     (if (= (p (first k)) 'BLEEP)
+                       (cons 'BLEEP (interact a p (rest k)))
+                       (interact a (p (first k)) (rest k))))))
