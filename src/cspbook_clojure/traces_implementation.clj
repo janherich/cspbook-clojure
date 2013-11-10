@@ -29,3 +29,12 @@
       (and (= (first s) (first t)) (isprefix (rest s) (rest t)))
       false)
     true))
+
+(defn istrace
+  "Determines if some list of symbols s could be the trace of some process p"
+  [s p]
+  (if (seq s)
+    (if (= (p (first s)) 'BLEEP)
+      false
+      (recur (rest s) (p (first s))))
+    true))
