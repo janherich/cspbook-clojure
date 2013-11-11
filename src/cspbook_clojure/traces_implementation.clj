@@ -4,7 +4,7 @@
   "Functions defining operations on (process) traces")
 
 (defn ismember
-  "Returns true is symbol x is members of some list of symbols b"
+  "Returns true if symbol x is member of some list of symbols b"
   [x b]
   (if (seq b)
     (if (= x (first b))
